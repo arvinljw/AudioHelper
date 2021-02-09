@@ -15,8 +15,6 @@ import java.io.File;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AudioRecorder.VolumeCallback, AudioPlayer.PlayStateCallback {
-    private ProgressBar recordProgress;
-    private ProgressBar playProgress;
 
     private AudioRecorder audioRecorder;
     private File recordFile;
@@ -35,12 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_play_start).setOnClickListener(this);
         findViewById(R.id.btn_play_pause).setOnClickListener(this);
         findViewById(R.id.btn_play_stop).setOnClickListener(this);
-
-        recordProgress = findViewById(R.id.record_progress_bar);
-        playProgress = findViewById(R.id.play_progress_bar);
-
-        recordProgress.setMax(60);
-        playProgress.setMax(60);
 
         permissionUtil = new PermissionUtil.Builder().with(this).build();
         permissionUtil.request("", new String[]{
